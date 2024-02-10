@@ -18,7 +18,15 @@ stop:
 down:
 	docker compose down
 
+down-volumes:
+	docker compose down --volumes
+
 logs: 
 	docker compose logs -f
+
+rm: 
+	docker rm harpokrates-front
+	docker rm harpokrates-back 
+	docker rm harpokrates-postgres
 
 .PHONY: build up build-front build-back build-wasm
