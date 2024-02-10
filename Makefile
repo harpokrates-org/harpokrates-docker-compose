@@ -7,7 +7,7 @@ build-front:
 	cd ../harpokrates-frontend && docker build -t harpokrates-front .
 
 build-back:
-	cd ../harpokrates-backend && docker build -t harpokrates-front .
+	cd ../harpokrates-backend && docker build -t harpokrates-back .
 
 build-wasm:
 	cd ../harpokrates-frontend && npm run build:wasm
