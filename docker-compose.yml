@@ -1,0 +1,36 @@
+version: '3.9'
+name: harpokrates
+services:
+  frontend:
+    container_name: harpokrates-front
+    image: harpokrates-front:latest
+    entrypoint: npm run dev
+    networks:
+      - harpokrates_net
+    ports:
+      - 3000:3000
+    volumes:
+      - ../harpokrates-frontend/:/usr/src/app/
+    depends_on:
+      - backend
+
+  backend:
+    container_name: harpokrates-back
+    image: harpokrates-back:latest
+    entrypoint: node src/server.js 
+    networks:
+      - harpokrates_net
+    ports:
+      - 4000:4000
+    environment:
+      - PORT=4000
+      - HOST=localhost
+    volumes:
+      - ../harpokrates-backend/:/usr/src/app/
+
+networks:
+  harpokrates_net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.25.125.0/24
