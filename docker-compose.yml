@@ -11,6 +11,7 @@ services:
       - 3000:3000
     volumes:
       - ../harpokrates-frontend/:/usr/src/app/
+      - /usr/src/app/node_modules
     depends_on:
       - backend
 
@@ -27,6 +28,7 @@ services:
       - HOST=localhost
     volumes:
       - ../harpokrates-backend/:/usr/src/app/
+      - /usr/src/app/node_modules
     depends_on:
       - postgres
 
