@@ -39,4 +39,12 @@ sh-front:
 sh-back:
 	docker exec -it harpokrates-back sh
 
+build-no-cache: build-front-no-cache build-back-no-cache
+
+build-front-no-cache:
+	cd ../harpokrates-frontend && docker build --no-cache -t harpokrates-front .
+
+build-back-no-cache:
+	cd ../harpokrates-backend && docker build --no-cache  -t harpokrates-back .
+
 .PHONY: build up build-front build-back build-wasm
