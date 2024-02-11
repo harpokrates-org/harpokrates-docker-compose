@@ -35,6 +35,7 @@ git-pull:
 
 sh-front: 
 	docker exec -it harpokrates-front sh
+	
 sh-back:
 	docker exec -it harpokrates-back sh
 
