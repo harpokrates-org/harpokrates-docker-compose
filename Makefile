@@ -1,6 +1,12 @@
 up:
 	docker compose up
 
+up-front:
+	docker compose up --renew-anon-volumes frontend
+
+up-back:
+	docker compose up --renew-anon-volumes backend
+
 build: build-front build-back
 	
 build-front:
