@@ -22,9 +22,9 @@ services:
     networks:
       - harpokrates_net
     ports:
-      - 4000:4000
+      - 8080:8080
     environment:
-      - PORT=4000
+      - PORT=8080
       - HOST=localhost
     volumes:
       - ../harpokrates-backend/:/usr/src/app/
