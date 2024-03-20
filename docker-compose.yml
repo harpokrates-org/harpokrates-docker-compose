@@ -23,7 +23,7 @@ services:
       - ../harpokrates-backend/:/usr/src/app/
       - /usr/src/app/node_modules
     depends_on:
-      - mongodb
+       - mongodb
     environment:
       - MONGO_URL=mongodb://root:root@mongodb:27017/
 
