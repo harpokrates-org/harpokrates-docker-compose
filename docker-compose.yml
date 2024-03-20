@@ -23,17 +23,17 @@ services:
       - ../harpokrates-backend/:/usr/src/app/
       - /usr/src/app/node_modules
     depends_on:
-      - postgres
-
-  postgres:
-    container_name: harpokrates-postgres
-    image: postgres:16-alpine3.19
-    ports:
-      - 5432:5432
-    volumes:
-      - ./postgresql/data:/var/lib/postgresql/data
+      - mongodb
     environment:
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_DB=postgres
+      - MONGO_URL=mongodb://root:root@mongodb:27017/
 
+  mongodb:
+    container_name: harpokrates-mongodb
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=root
+    volumes:
+      - ./mongo-data:/data/db
