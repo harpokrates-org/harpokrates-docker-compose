@@ -4,6 +4,12 @@ Docker compose para el ambiente de desarrollo
 
 ## Modo de uso
 
+### Nuevo: Levantar mongodb
+
+```
+make up-mongodb
+```
+
 ### Jerarquia de repositorios
 Asume que los repositorios se encuentran en la siguiente estructura y que estamos parados en harpokrates-docker-compose
 

@@ -1,11 +1,17 @@
 up:
 	docker compose up
 
+up-dev:
+	docker compose -f docker-compose-dev.yml up
+
 up-front:
 	docker compose up --renew-anon-volumes frontend
 
 up-back:
 	docker compose up --renew-anon-volumes backend
+
+up-mongodb:
+	docker compose up --renew-anon-volumes mongodb
 
 build: build-front build-back
 	
