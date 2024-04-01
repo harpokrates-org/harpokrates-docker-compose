@@ -6,8 +6,28 @@ Docker compose para el ambiente de desarrollo
 
 ### Nuevo: Levantar mongodb
 
-```
+```bash
 make up-mongodb
+```
+
+#### Conexion a bases de datos de desarrollo y testing
+
+desarollo: 
+```
+mongodb://harpokrates:harpokrates@localhost:27017/harpokrates-dev
+```
+test:
+```
+mongodb://harpokrates:harpokrates@localhost:27017/harpokrates-test
+```
+
+Ejemplo: Mongodb compass
+- Agregar url de conexion en caja URI
+
+Ejemplo: Por terminal
+```bash
+mongosh mongodb://harpokrates:harpokrates@localhost:27017/harpokrates-dev
+mongosh mongodb://harpokrates:harpokrates@localhost:27017/harpokrates-test
 ```
 
 ### Jerarquia de repositorios
