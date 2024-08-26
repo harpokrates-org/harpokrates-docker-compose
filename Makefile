@@ -1,11 +1,8 @@
 up:
 	docker compose up
 
-up-dev:
-	docker compose -f docker-compose-dev.yml up
-
 up-front:
-	docker compose up --renew-anon-volumes frontend
+	docker compose up --renew-anon-volumes frontend 
 
 up-back:
 	docker compose up --renew-anon-volumes backend
@@ -16,10 +13,10 @@ up-mongodb:
 build: build-front build-back
 	
 build-front:
-	cd ../harpokrates-frontend && docker build -t harpokrates-front .
+	cd ../harpokrates-frontend && docker build -t harpokrates-front . 
 
 build-back:
-	cd ../harpokrates-backend && docker build -t harpokrates-back .
+	cd ../harpokrates-backend && docker build -t harpokrates-back . 
 
 build-wasm:
 	cd ../harpokrates-frontend && npm run build:wasm
@@ -58,5 +55,39 @@ build-front-no-cache:
 
 build-back-no-cache:
 	cd ../harpokrates-backend && docker build --no-cache  -t harpokrates-back .
+
+# Dev 
+up-dev:
+	docker compose -f docker-compose-dev.yml up
+
+up-front-dev:
+	docker compose -f docker-compose-dev.yml up --renew-anon-volumes frontend
+
+up-back-dev:
+	docker compose -f docker-compose-dev.yml up --renew-anon-volumes backend
+
+up-mongodb-dev:
+	docker compose -f docker-compose-dev.yml up --renew-anon-volumes mongodb
+
+stop-dev:
+	docker compose -f docker-compose-dev.yml stop
+
+down-dev:
+	docker compose -f docker-compose-dev.yml down
+
+down-volumes-dev:
+	docker compose -f docker-compose-dev.yml down --volumes
+
+logs-dev: 
+	docker compose -f docker-compose-dev.yml logs -f
+
+build-dev: build-front-dev build-back-dev
+	
+build-front-dev:
+	cd ../harpokrates-frontend && docker build -f Dockerfile-dev -t harpokrates-front-dev . 
+
+build-back-dev:
+	cd ../harpokrates-backend && docker build -f Dockerfile-dev -t harpokrates-back-dev . 
+
 
 .PHONY: build up build-front build-back build-wasm

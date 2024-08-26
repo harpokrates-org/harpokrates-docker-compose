@@ -1,9 +1,9 @@
 version: '3.9'
-name: harpokrates
+name: harpokrates-dev
 services:
   frontend:
     container_name: harpokrates-front
-    image: harpokrates-front:latest
+    image: harpokrates-front-dev:latest
     entrypoint: tail -f /dev/null
     ports:
       - "3000:3000"
@@ -15,7 +15,7 @@ services:
 
   backend:
     container_name: harpokrates-back
-    image: harpokrates-back:latest
+    image: harpokrates-back-dev:latest
     entrypoint: tail -f /dev/null
     ports:
       - "8080:8080"
@@ -36,5 +36,5 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=root
     volumes:
-      - ./mongodb/data/db:/data/db
+      - ./mongodb/data-dev/db:/data/db
       - ./mongodb/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d/

@@ -30,6 +30,12 @@ mongosh mongodb://harpokrates:harpokrates@localhost:27017/harpokrates-dev
 mongosh mongodb://harpokrates:harpokrates@localhost:27017/harpokrates-test
 ```
 
+Para agregar a .env en backend 
+```bash
+MONGO_URL=mongodb://harpokrates:harpokrates@localhost:27017/harpokrates-dev
+MONGO_URL_TEST=mongodb://harpokrates:harpokrates@localhost:27017/harpokrates-test
+```
+
 ### Jerarquia de repositorios
 Asume que los repositorios se encuentran en la siguiente estructura y que estamos parados en harpokrates-docker-compose
 

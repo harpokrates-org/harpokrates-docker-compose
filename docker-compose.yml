@@ -4,12 +4,12 @@ services:
   frontend:
     container_name: harpokrates-front
     image: harpokrates-front:latest
-    entrypoint: npm run dev
+    entrypoint: node server.js
     ports:
       - "3000:3000"
-    volumes:
-      - ../harpokrates-frontend/:/usr/src/app/
-      - /usr/src/app/node_modules
+    environment:
+      - PORT=3000
+      - HOSTNAME=0.0.0.0 
     depends_on:
       - backend
 
@@ -19,9 +19,6 @@ services:
     entrypoint: node src/server.js 
     ports:
       - "8080:8080"
-    volumes:
-      - ../harpokrates-backend/:/usr/src/app/
-      - /usr/src/app/node_modules
     depends_on:
        - mongodb
     environment:
