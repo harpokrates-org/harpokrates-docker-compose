@@ -60,7 +60,7 @@ build-back-no-cache:
 
 # Dev 
 up-dev:
-	docker compose -f docker-compose-dev.yml up
+	docker compose --env-file dev.env -f docker-compose-dev.yml up
 
 up-front-dev:
 	docker compose -f docker-compose-dev.yml up --renew-anon-volumes frontend
@@ -89,7 +89,7 @@ build-front-dev:
 	cd ../harpokrates-frontend && docker build -f Dockerfile-dev -t harpokrates-front-dev . 
 
 build-back-dev:
-	cd ../harpokrates-backend && docker build -f Dockerfile-dev -t harpokrates-back-dev . 
+	cd ../harpokrates-backend && docker build -f Dockerfile -t harpokrates-back-dev . 
 
 
 .PHONY: build up build-front build-back build-wasm

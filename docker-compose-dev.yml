@@ -2,33 +2,35 @@ version: '3.9'
 name: harpokrates-dev
 services:
   frontend:
-    container_name: harpokrates-front
+    container_name: harpokrates-front-dev
     image: harpokrates-front-dev:latest
-    entrypoint: tail -f /dev/null
     ports:
       - "3000:3000"
-    volumes:
-      - ../harpokrates-frontend/:/usr/src/app/
-      - /usr/src/app/node_modules
     depends_on:
       - backend
+    volumes:
+      - ../harpokrates-frontend/app:/usr/src/app/app/
+      - ../harpokrates-frontend/wasm-lib:/usr/src/app/wasm-lib/
 
   backend:
-    container_name: harpokrates-back
+    container_name: harpokrates-back-dev
     image: harpokrates-back-dev:latest
-    entrypoint: tail -f /dev/null
     ports:
       - "8080:8080"
-    volumes:
-      - ../harpokrates-backend/:/usr/src/app/
-      - /usr/src/app/node_modules
     depends_on:
        - mongodb
     environment:
-      - MONGO_URL=mongodb://root:root@mongodb:27017/
+      - PORT=8080
+      - HOST=0.0.0.0
+      - MONGO_URL=mongodb://harpokrates:harpokrates@mongodb:27017/harpokrates-dev
+      - FLICKR_API_KEY=${FLICKR_API_KEY}
+      - FLICKR_CALLS_LIMIT=5
+    volumes:
+      - ../harpokrates-backend/src/:/usr/src/app/src/
+      - ../harpokrates-backend/test/:/usr/src/app/test/
 
   mongodb:
-    container_name: harpokrates-mongodb
+    container_name: harpokrates-mongodb-dev
     image: mongo:latest
     ports:
       - "27017:27017"
@@ -36,5 +38,5 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=root
     volumes:
-      - ./mongodb/data-dev/db:/data/db
+      - ./mongodb/data/db:/data/db
       - ./mongodb/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d/
