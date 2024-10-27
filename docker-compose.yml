@@ -21,6 +21,7 @@ services:
       - HOST=0.0.0.0
       - MONGO_URL=mongodb://harpokrates:harpokrates@mongodb:27017/harpokrates
       - FLICKR_API_KEY=${FLICKR_API_KEY}
+      - FLICKR_CALLS_LIMIT=5
 
   mongodb:
     container_name: harpokrates-mongodb
