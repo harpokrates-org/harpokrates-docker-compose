@@ -4,25 +4,23 @@ services:
   frontend:
     container_name: harpokrates-front
     image: harpokrates-front:latest
-    entrypoint: node server.js
     ports:
       - "3000:3000"
-    environment:
-      - PORT=3000
-      - HOSTNAME=0.0.0.0 
     depends_on:
       - backend
 
   backend:
     container_name: harpokrates-back
     image: harpokrates-back:latest
-    entrypoint: node src/server.js 
     ports:
       - "8080:8080"
     depends_on:
        - mongodb
     environment:
-      - MONGO_URL=mongodb://root:root@mongodb:27017/
+      - PORT=8080
+      - HOST=0.0.0.0
+      - MONGO_URL=mongodb://harpokrates:harpokrates@mongodb:27017/harpokrates
+      - FLICKR_API_KEY=${FLICKR_API_KEY}
 
   mongodb:
     container_name: harpokrates-mongodb

@@ -1,3 +1,5 @@
+NEXT_PUBLIC_BACKEND_URL="http://0.0.0.0:8080"
+
 up:
 	docker compose up
 
@@ -13,7 +15,7 @@ up-mongodb:
 build: build-front build-back
 	
 build-front:
-	cd ../harpokrates-frontend && docker build -t harpokrates-front . 
+	cd ../harpokrates-frontend && docker build --build-arg NEXT_PUBLIC_BACKEND_URL=${NEXT_PUBLIC_BACKEND_URL} -t harpokrates-front . 
 
 build-back:
 	cd ../harpokrates-backend && docker build -t harpokrates-back . 

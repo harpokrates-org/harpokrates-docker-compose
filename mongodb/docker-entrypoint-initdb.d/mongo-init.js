@@ -1,3 +1,14 @@
+// Creo y asigno roles en la base de datos productiva
+dev = db.getSiblingDB("harpokrates");
+
+dev.createUser({
+  user: "harpokrates",
+  pwd: "harpokrates",
+  roles: [
+    { role: "readWrite", db: "harpokrates" }
+  ],
+});
+
 // Creo y asigno roles en la base de datos de desarrollo
 dev = db.getSiblingDB("harpokrates-dev");
 
